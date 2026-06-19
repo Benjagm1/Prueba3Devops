@@ -42,7 +42,7 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: innovatech-backend # <-- CAMBIA ESTO por el nombre en AWS
           IMAGE_TAG: latest
-        working-directory: ./Springboot-API-REST-DESPACHO # <-- CAMBIA ESTO por el nombre de tu carpeta local
+        working-directory: ./Springboot-API-REST-DESPACHO/Springboot-API-REST-DESPACHO # <-- CAMBIA ESTO por el nombre de tu carpeta local
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
@@ -53,7 +53,7 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: innovatech-backend2 # <-- CAMBIA ESTO por el nombre en AWS
           IMAGE_TAG: latest
-        working-directory: ./Springboot-API-REST # <-- CAMBIA ESTO por el nombre de tu carpeta local
+        working-directory: ./Springboot-API-REST-VENTA/Springboot-API-REST-VENTA # <-- CAMBIA ESTO por el nombre de tu carpeta local
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
