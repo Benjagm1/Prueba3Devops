@@ -9,6 +9,6 @@ RUN npm run build
 # Etapa 2: Servidor de Producción (Nginx)
 FROM nginx:alpine
 # Nota: Si usas Vite, cambia /app/build por /app/dist en la siguiente línea
-COPY --from=build /app/build /usr/share/nginx/html 
+COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
