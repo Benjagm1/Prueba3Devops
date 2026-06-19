@@ -1,0 +1,62 @@
+name: Despliegue a AWS ECR
+
+on:
+  push:
+    branches:
+      - main # Cambia esto a 'master' si tu rama principal se llama así
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v3
+
+      - name: Configurar credenciales de AWS
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }} # Vital para AWS Academy
+          aws-region: us-east-1 # Cambia esto si tu laboratorio está en otra región
+
+      - name: Iniciar sesión en Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Listar todos los archivos y carpetas
+        run: ls -R
+
+      # --- CONSTRUCCIÓN DEL FRONTEND ---
+      - name: Build y Push - Frontend
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: innovatech-frontend # <-- CAMBIA ESTO por el nombre en AWS
+          IMAGE_TAG: latest
+        working-directory: ./front_despacho # <-- CAMBIA ESTO por el nombre de tu carpeta local
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+      # --- CONSTRUCCIÓN DEL BACKEND 1 ---
+      - name: Build y Push - Backend Principal
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: innovatech-backend # <-- CAMBIA ESTO por el nombre en AWS
+          IMAGE_TAG: latest
+        working-directory: ./back-Despachos_SpringBoot/Springboot-API-REST-DESPACHO # <-- CAMBIA ESTO por el nombre de tu carpeta local
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+      # --- CONSTRUCCIÓN DEL BACKEND 2 ---
+      - name: Build y Push - Backend Secundario
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: innovatech-backend2 # <-- CAMBIA ESTO por el nombre en AWS
+          IMAGE_TAG: latest
+        working-directory: ./back-Ventas_SpringBoot/Springboot-API-REST # <-- CAMBIA ESTO por el nombre de tu carpeta local
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
