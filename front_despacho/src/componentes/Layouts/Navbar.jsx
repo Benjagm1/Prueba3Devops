@@ -1,90 +1,42 @@
-<<<<<<< HEAD
 import React from 'react';
 
 export default function Navbar() {
   return (
-    <nav className="bg-slate-900/90 border-b border-slate-800 backdrop-blur sticky top-0 z-50 transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+    <nav className="bg-gray-900 border-b-2 border-green-500 px-6 py-4 sticky top-0 z-50 shadow-xl shadow-green-900/10">
+      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        
+        {/* Identificador de Marca Modificado (Visualmente impactante) */}
+        <div className="flex items-center space-x-3">
+          <div className="h-10 w-10 rounded-full bg-green-500 flex items-center justify-center text-xl shadow-[0_0_15px_rgba(34,197,94,0.5)]">
+            🚀
+          </div>
+          <span className="text-xl font-black uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">
+            Innovatech Live
+          </span>
+        </div>
+
+        {/* Indicadores de Infraestructura y Pipeline */}
+        <div className="flex flex-wrap items-center justify-center gap-4">
           
-          {}
-          <div className="flex items-center space-x-3">
-            {/* Emblema con iniciales */}
-            <div className="h-9 w-9 rounded-lg bg-gradient-to-br from-indigo-500 to-indigo-700 flex items-center justify-center font-bold text-white shadow-lg shadow-indigo-500/20 transform hover:scale-105 transition-transform">
-              IN
-            </div>
-            {/* Texto de Marca con Degradado */}
-            <span className="text-lg font-bold tracking-tight bg-gradient-to-r bg-clip-text text-transparent from-indigo-400 to-cyan-400">
-              Innovatech Portal
-            </span>
+          {/* Nuevo formato de badge para el Orquestador */}
+          <div className="bg-gray-800 border border-gray-700 px-4 py-1.5 rounded-md text-xs text-gray-300 font-mono flex items-center gap-2">
+            <span>⚙️ Orquestador: <span className="text-orange-400 font-bold">ECS Fargate</span></span>
           </div>
 
-          {}
-          <div className="hidden md:flex space-x-6">
-            <span className="text-sm font-medium text-slate-300 hover:text-indigo-400 cursor-pointer transition-colors">
-              Módulo Despachos
+          {/* Badge parpadeante súper evidente */}
+          <div className="flex items-center space-x-2 bg-green-500/10 border border-green-500/40 px-4 py-1.5 rounded-full shadow-[0_0_10px_rgba(34,197,94,0.2)]">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
             </span>
-            <span className="text-sm font-medium text-slate-500 hover:text-indigo-400 cursor-pointer transition-colors">
-              Módulo Ventas
-            </span>
-            <span className="text-sm font-medium text-slate-500 hover:text-indigo-400 cursor-pointer transition-colors">
-              Reportería
-            </span>
-          </div>
-
-          {}
-          <div className="flex items-center space-x-2 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1.5 rounded-full shadow-inner">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-            </span>
-            <span className="text-[10px] sm:text-xs font-semibold text-emerald-400 uppercase tracking-wider">
-              CI/CD: v2.0 Activo (Fargate)
+            <span className="text-[11px] font-bold text-green-400 uppercase tracking-widest">
+              Deploy v3.0 Exitoso
             </span>
           </div>
 
         </div>
+
       </div>
     </nav>
   );
 }
-=======
-function Navbar() {
-  return (
-    <nav className="rounded-xl w-[250px] min-h-[880px] bg-teal-600 text-white sticky top-0 p-4 m-4">
-      {/* Logo o título */}
-      <h2 className="text-xl font-bold mb-8">Despacho Dashboard</h2>
-
-      {/* Menú de navegación */}
-      <ul className="space-y-3">
-        <li>
-          <a
-            href="#"
-            className="block font-bold py-2 px-3 hover:bg-teal-700 rounded"
-          >
-            Usuarios
-          </a>
-        </li>
-        <li>
-          <a
-            href="#"
-            className="block font-bold py-2 px-3 hover:bg-teal-700 rounded"
-          >
-            Productos
-          </a>
-        </li>
-        <li>
-          <a
-            href="#"
-            className="block font-bold py-2 px-3 hover:bg-teal-700 rounded"
-          >
-            Configuración
-          </a>
-        </li>
-      </ul>
-    </nav>
-  );
-}
-
-export default Navbar;
->>>>>>> 1c7aede2932e9c45aad2c75fba6197ae925d0e06
