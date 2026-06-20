@@ -5,7 +5,7 @@ export default function Navbar() {
     <nav className="bg-gray-900 border-b-2 border-green-500 px-6 py-4 sticky top-0 z-50 shadow-xl shadow-green-900/10">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         
-        {/* Identificador de Marca Modificado (Visualmente impactante) */}
+        {/* Identificador de Marca Modificado */}
         <div className="flex items-center space-x-3">
           <div className="h-10 w-10 rounded-full bg-green-500 flex items-center justify-center text-xl shadow-[0_0_15px_rgba(34,197,94,0.5)]">
             🚀
